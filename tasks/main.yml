@@ -1,10 +1,10 @@
 ---
-
 - name: Install Ruby RPM
   yum:
     name: "ruby-{{ ruby_version }}"
     state: present
-    disablerepo: "rhel-7-server-rpms"
+    disablerepo: "*"
+    enablerepo: "uclalib"
 
 - name: Install/Update Base Ruby Gems
   command: >
