@@ -1,10 +1,15 @@
 ---
+- name: Download UCLA RPM from S3
+  aws_s3:
+    bucket: dce-util
+    object: ruby-2.5.1-1.el7.x86_64.rpm
+    dest: /opt
+    mode: get
+
 - name: Install Ruby RPM
   yum:
-    name: "ruby-{{ ruby_version }}"
+    name: /opt/ruby-2.5.1-1.el7.x86_64.rpm
     state: present
-    disablerepo: "*"
-    enablerepo: "uclalib"
 
 - name: Install/Update Base Ruby Gems
   command: >
